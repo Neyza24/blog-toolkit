@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { postSlice } from "./posts/postSlice";
+import { postsSlice } from "./posts/postsSlice";
 
 
 export const store = configureStore({
     reducer: {
-        posts: postSlice.reducer,
+        posts: postsSlice.reducer,
     }
 });

@@ -1,3 +1,3 @@
 export * from './store';
-export * from './posts/postSlice';
+export * from './posts/postsSlice';
 export * from './posts/thunks';
