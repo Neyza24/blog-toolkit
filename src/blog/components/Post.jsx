@@ -1,18 +1,27 @@
-import { Link } from "react-router-dom"
+import { Button, Card, CardActions, CardContent, Typography } from "@mui/material"
+import { Link as RouterLink } from "react-router-dom"
 
 
-export const Post = ({post, excerpt}) => {
+export const Post = ({ post, excerpt }) => {
 
 
     return (
-        <article className={excerpt ? "post-excerpt" : "post"}>
-            <h2>{post.title}</h2>
-            <p>{excerpt ? post.body.substring(0, 100) : post.body}</p>
+        <Card sx={{ minWidth: 345 }}>
+            <CardContent
+                variant="outlined"
+            >
+                <Typography variant="h5" component="div">{post.title}</Typography>
+                <Typography>{excerpt ? post.body.substring(0, 100) : post.body}</Typography>
 
-            {
-                excerpt && (<Link to={`/posts/${post.id}`} className="button">View Post</Link>)
-            }
-        </article>
+            </CardContent>
+            <CardActions>
+                {
+                    excerpt && (
+                        <Button to={`/posts/${post.id}`} component={RouterLink} variant="outlined">View Post</Button>
+                    )
+                }
+            </CardActions>
+        </Card>
     )
 }
 
