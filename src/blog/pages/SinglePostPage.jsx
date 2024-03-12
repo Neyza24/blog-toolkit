@@ -1,33 +1,48 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { fetchCommentsByPostId } from "../../store";
 import { useParams } from "react-router-dom";
-import { Comment } from "../components";
+import { fetchCommentsByPostId, fetchPostById } from "../../store";
+import { Comment, Post } from "../components";
 
 
 
 export const SinglePostPage = () => {
 
     const dispatch = useDispatch();
-    const {isLoading, comments} = useSelector(state => state.comments);
+    const {post, isLoading: isLoadingPost, hasError: hasErrorPost} = useSelector(state => state.post);
+    const {comments, isLoading, hasError} = useSelector(state => state.comments);
+
     
     const {id} = useParams();
 
-    console.log(isLoading, comments);
-
     useEffect(() => {
-
+        dispatch(fetchPostById(id));
         dispatch(fetchCommentsByPostId(id));
-    }, [dispatch, id])
+    }, [dispatch, id]);
+
+
+    const renderPost = () => {
+        if(isLoadingPost) return <p>Loading post...</p>;
+        if(hasErrorPost) return <p>Unable to display post...</p>;
+
+        return <Post post={post}/>
+    };
+
+    const renderComments = () => {
+        if(isLoading) return <p>Loading post...</p>;
+        if(hasError) return <p>Unable to display post...</p>;
+
+        return comments?.map( comment => <Comment key={comment.id} comment={comment}/>)
+    }
 
 
 
     return (
         <section>
+            <h2>Post</h2>
+            {renderPost()}
             <h2>Comments</h2>
-            {
-                comments?.map( comment => <Comment key={comment.id} comment={comment}/>)
-            }
+            {renderComments()}
         </section>
     )
 }

@@ -13,11 +13,14 @@ export const commentsByPostIdSlice = createSlice({
         getComments: (state) => {
             state.isLoading = true;
         },
-        getCommentsSucces: (state, action) => {
+        getCommentsSuccess: (state, action) => {
             state.isLoading = false;
             state.comments = action.payload
+        },
+        getCommentsError: (state) => {
+            state.hasError = true;
         }
     }
 }); 
 
-export const { getComments, getCommentsSucces } = commentsByPostIdSlice.actions;
+export const { getComments, getCommentsSuccess, getCommentsError } = commentsByPostIdSlice.actions;

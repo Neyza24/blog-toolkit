@@ -1,7 +1,8 @@
 // Asynchronous thunk action
 
-import { getComments, getCommentsSucces } from "./commentsByPostIdSlice";
-import { getPosts, getPostsError, getPostsSucces } from "./postsSlice"
+import { getComments, getCommentsError, getCommentsSuccess} from "./commentsByPostIdSlice";
+import { getPost, getPostError, getPostSuccess } from "./postByIdSlice";
+import { getPosts, getPostsError, getPostsSuccess } from "./postsSlice"
 
 export function fetchPosts() {
     return async(dispatch) => {
@@ -10,10 +11,9 @@ export function fetchPosts() {
         try {
             const response = await fetch('https://jsonplaceholder.typicode.com/posts');
             const data = await response.json();
-            console.log(data);
-            dispatch(getPostsSucces(data));
+            dispatch(getPostsSuccess(data));
         } catch (error) {
-            console.log(error);
+            
             dispatch(getPostsError());
         }
     }
@@ -26,12 +26,27 @@ export function fetchCommentsByPostId(postId) {
         try {
             const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
             const data = await response.json();
-            console.log(data);
-            dispatch(getCommentsSucces(data));
+            dispatch(getCommentsSuccess(data));
             
         } catch (error) {
-            console.log(error);
+            dispatch(getCommentsError());
             
+        }
+    }
+}
+
+export function fetchPostById(id) {
+    return async(dispatch) => {
+        dispatch(getPost());
+        
+        try {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+            const data = await response.json();
+            console.log(data);
+            dispatch(getPostSuccess(data));
+        } catch (error) {
+            console.log(error);
+            dispatch(getPostError());
         }
     }
 }

@@ -14,9 +14,9 @@ export const postsSlice = createSlice({
         getPosts: (state) => {
             state.loading = true;
         },
-        getPostsSucces: (state, action) => {
+        getPostsSuccess: (state, action) => {
             state.loading = false;
-            state.posts = action.payload
+            state.posts = action.payload;
         },
         getPostsError: (state) => {
             state.hasErrors = true;
@@ -25,4 +25,4 @@ export const postsSlice = createSlice({
 }); 
 
 
-export const { getPosts, getPostsSucces, getPostsError } = postsSlice.actions;
+export const { getPosts, getPostsSuccess, getPostsError } = postsSlice.actions;
