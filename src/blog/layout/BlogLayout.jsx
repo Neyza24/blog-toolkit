@@ -8,4 +8,5 @@ export const BlogLayout = ({title = ''}) => {
     )
 }
 
+
 /* eslint react/prop-types: 0 */

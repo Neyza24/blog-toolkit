@@ -1,22 +1,31 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPosts } from "../../store";
+import { Post } from "../components";
 
 
 export const PostsPage = () => {
 
   const dispatch = useDispatch();
-  const {posts} = useSelector(state => state.posts);
+  const {posts, loading, hasErrors} = useSelector(state => state.posts);
 
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch])
 
-  console.log(posts);
+  // console.log(posts);
+
+  if(loading) return <p>Loading posts...</p>
+  if(hasErrors) return <p>Unable to display posts.</p>
+
 
   return (
     <section>
       <h1>Posts</h1>
+      {
+        posts.map( post => <Post key={post.id}  post={post} excerpt/>)
+      }
     </section>
   )
 }
+

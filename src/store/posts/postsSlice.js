@@ -13,9 +13,16 @@ export const postsSlice = createSlice({
     reducers: {
         getPosts: (state) => {
             state.loading = true;
+        },
+        getPostsSucces: (state, action) => {
+            state.loading = false;
+            state.posts = action.payload
+        },
+        getPostsError: (state) => {
+            state.hasErrors = true;
         }
     }
 }); 
 
 
-export const { getPosts } = postsSlice.actions;
+export const { getPosts, getPostsSucces, getPostsError } = postsSlice.actions;
