@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom"
 
 
 export const Post = ({ post, excerpt }) => {
-
+    
 
     return (
         <Card sx={{ minWidth: 345 }}>

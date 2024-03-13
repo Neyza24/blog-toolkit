@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPosts } from "../../store";
 import { Post } from "../components";
+import { Typography } from "@mui/material";
 
 
 export const PostsPage = () => {
@@ -21,7 +22,7 @@ export const PostsPage = () => {
 
   return (
     <section>
-      <h1>Posts</h1>
+      <Typography variant="h4">Posts</Typography>
       {
         posts.map( post => <Post key={post.id}  post={post} excerpt/>)
       }
