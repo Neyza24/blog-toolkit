@@ -1,130 +1,166 @@
-
-import { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
+import Drawer from '@mui/material/Drawer';
+import MenuIcon from '@mui/icons-material/Menu';
+import { useState } from 'react';
+import { ToggleColorMode } from './ToggleColorMode';
 import AdbIcon from '@mui/icons-material/Adb';
 
-import { ThemeSelector } from './ThemeSelector';
-
-const pages = ['Dashboard', 'Posts'];
+// const logoStyle = {
+//     width: '140px',
+//     height: 'auto',
+//     cursor: 'pointer',
+// };
 
 export const NavBar = () => {
-    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [open, setOpen] = useState(false);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+    const toggleDrawer = (newOpen) => () => {
+        setOpen(newOpen);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
+        <div>
+            <AppBar
+                position="fixed"
+                sx={{
+                    boxShadow: 0,
+                    bgcolor: 'transparent',
+                    backgroundImage: 'none',
+                    mt: 2,
+                }}
+            >
+                <Container maxWidth="lg" >
+                    <Toolbar
+                        variant="regular"
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
+                        sx={(theme) => ({
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            flexShrink: 0,
+
+                            borderRadius: '999px',
+                            bgcolor:
+                                theme.palette.mode === 'light'
+                                    ? 'rgba(255, 255, 255, 0.4)'
+                                    : 'rgba(0, 0, 0, 0.4)',
+                            backdropFilter: 'blur(24px)',
+                            maxHeight: 40,
+                            border: '1px solid',
+                            borderColor: 'divider',
+                            boxShadow:
+                                theme.palette.mode === 'light'
+                                    ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
+                                    : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
+                        })}
+                    >
+                        <Box
                             sx={{
-                                display: { xs: 'block', md: 'none' },
+                                flexGrow: 1,
+                                display: 'flex',
+                                alignItems: 'center',
+                                ml: '-18px',
+                                px: 0,
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
-                        <ThemeSelector />
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
+                            <Box>
+                                <MenuItem
+                                    // onClick={() => scrollToSection('features')}
+                                    sx={{ py: '6px', px: '24px' }}
+                                >
+                                    <Typography variant="body2" color="text.primary">
+                                        <AdbIcon />
+                                    </Typography>
+                                </MenuItem>
+                            </Box>
+
+                            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
+                                <MenuItem
+                                    // onClick={() => scrollToSection('features')}
+                                    sx={{ py: '6px', px: '12px' }}
+                                >
+                                    <Typography variant="body2" color="text.primary">
+                                        Dashboard
+                                    </Typography>
+                                </MenuItem>
+                                <MenuItem
+                                    // onClick={() => scrollToSection('testimonials')}
+                                    sx={{ py: '6px', px: '12px' }}
+                                >
+                                    <Typography variant="body2" color="text.primary">
+                                        Posts
+                                    </Typography>
+                                </MenuItem>
+                            </Box>
+                        </Box>
+
+                        <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
+
+                            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+                                <Box
+                                    sx={{
+                                        minWidth: '60dvw',
+                                        p: 2,
+                                        backgroundColor: 'background.paper',
+                                        flexGrow: 1,
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'end',
+                                            flexGrow: 1,
+                                        }}
+                                    >
+                                        <ToggleColorMode />
+                                    </Box>
+                                    <MenuItem >
+                                        Dashboard
+                                    </MenuItem>
+                                    <MenuItem >
+                                        Posts
+                                    </MenuItem>
+                                    <Divider />
+                                </Box>
+                            </Drawer>
+                            <Button
+                                variant="text"
+                                color="primary"
+                                aria-label="menu"
+                                onClick={toggleDrawer(true)}
+                                sx={{ minWidth: '30px', p: '4px' }}
+                            >
+                                <MenuIcon />
+                            </Button>
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: { xs: 'none', md: 'flex' },
+                                gap: 0.5,
+                                alignItems: 'center',
+                            }}
+                        >
+                            <ToggleColorMode />
+                        </Box>
+
+                    </Toolbar>
+                </Container>
+            </AppBar>
+        </div>
     );
 }
 
+/* eslint react/prop-types: 0 */
 

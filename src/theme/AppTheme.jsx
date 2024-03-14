@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { darkTheme } from "./darkTheme";
 import { lightTheme } from "./lightTheme";
@@ -13,7 +13,7 @@ export const AppTheme = ({children}) => {
 
     const {value} = useSelector(state => state.theme);
 
-    useEffect(() => {
+    useMemo(() => {
         switch (value) {
             case 'light':
                 setActiveTheme(lightTheme);

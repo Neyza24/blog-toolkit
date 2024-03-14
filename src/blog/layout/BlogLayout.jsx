@@ -1,12 +1,19 @@
+import { Container } from "@mui/material";
+import { Footer, Header } from "../components";
 
-
-export const BlogLayout = ({title = ''}) => {
+export const BlogLayout = ({ children }) => {
     return (
-        <div>
-            <h1>{title}</h1>
-        </div>
-    )
-}
+        <>
+            <Container maxWidth="lg">
+                <Header />
+                <main>
+                    {children}
+                </main>
+            </Container>
 
+            <Footer />
+        </>
+    );
+};
 
 /* eslint react/prop-types: 0 */

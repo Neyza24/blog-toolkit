@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchPosts } from "../../store";
 import { Post } from "../components";
 import { Typography } from "@mui/material";
+import { BlogLayout } from "../layout/BlogLayout";
 
 
 export const PostsPage = () => {
@@ -14,19 +15,21 @@ export const PostsPage = () => {
     dispatch(fetchPosts());
   }, [dispatch])
 
-  // console.log(posts);
 
   if(loading) return <p>Loading posts...</p>
   if(hasErrors) return <p>Unable to display posts.</p>
 
 
   return (
-    <section>
+    <BlogLayout>
+      <section>
       <Typography variant="h4">Posts</Typography>
       {
         posts.map( post => <Post key={post.id}  post={post} excerpt/>)
       }
     </section>
+    </BlogLayout>
+    
   )
 }
 

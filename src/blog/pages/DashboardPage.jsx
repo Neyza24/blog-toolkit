@@ -1,18 +1,22 @@
-import { Link } from "react-router-dom"
-import { NavBar } from "../components"
+import { BlogLayout } from "../layout/BlogLayout"
+import { FeaturedPost, MainFeaturedPost } from "../components"
+import { featuredPosts } from "../../mock/data";
+import { Grid } from "@mui/material"
+
 
 
 export const DashboardPage = () => {
   return (
-    <section>
-      <NavBar />
-      <h1>Dashboard</h1>
-      
-      <p>This is the dashboard</p>
+    <BlogLayout>
+      <MainFeaturedPost />
+      <Grid container spacing={4}>
+        {
+          featuredPosts.map((post) => (
+            <FeaturedPost key={post.title} post={post} />
+          ))
+        }
+      </Grid>
+    </BlogLayout>
 
-      <Link to="/posts" className="button">
-        View Posts
-      </Link>
-    </section>
   )
 }
