@@ -2,7 +2,7 @@ import { Link as RouterLink } from "react-router-dom"
 import {Typography, Grid, Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 
 
-export const FeaturedPost = ({post}) => {
+export const FeaturedPost = ({post, img}) => {
     
     return (
         <Grid item xs={12} md={6}>
@@ -13,7 +13,7 @@ export const FeaturedPost = ({post}) => {
                             {post.title}
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
-                            {post.description}
+                            {post.body}
                         </Typography>
                         <Typography variant="subtitle1" color="primary">
                             Continue reading...
@@ -22,7 +22,7 @@ export const FeaturedPost = ({post}) => {
                     <CardMedia
                         component="img"
                         sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                        image={post.image}
+                        image={img}
                         alt={post.imageLabel}
                     />
                 </Card>

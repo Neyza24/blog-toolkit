@@ -50,6 +50,7 @@ export const Header = () => {
                             component={RouterLink}
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'dark', display: 'block' }}
+
                         >
                             {page.name}
                         </Button>

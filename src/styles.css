@@ -1,3 +1,87 @@
+:root {
+    /* Colors */
+    --gray-0: #f9f9f9;
+    --gray-05: #f6f6f6;
+    --gray-1: #eee;
+    --gray-2: #e6e6e6;
+    --gray-3: #ddd;
+    --gray-4: #bbb;
+    --gray-5: #999;
+    --gray-6: #666;
+    --gray-65: #555;
+    --gray-7: #2c2c2c;
+    --gray-8: #252525;
+    --gray-9: #1f1f1f;
+    --gray-10: #181818;
+  
+    --green: #5eddac;
+    --orange: #ff7e22;
+    --yellow: #fca62a;
+    --light-yellow: #f6cd5d;
+    --pink: #f57ad0;
+    --lavendar: #9b78fa;
+    --violet: #ff67f7;
+    --blue: #59abf7;
+    --purple: #673ece;
+    --indigo: #5a43f1;
+    --indigo-dark: #4509cf;
+    --indigo-light: #969bf6;
+    --indigo-muted: #f1f2fd;
+  
+    /* Font family */
+    --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont,
+      'Helvetica Neue', Arial, sans-serif;
+    --font-family-monospace: Menlo, 'IBM Plex Mono', Menlo, monospace;
+    --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont,
+      'Helvetica Neue', Arial, sans-serif;
+    --font-family-nav: 'Inter', -apple-system, BlinkMacSystemFont,
+      'Helvetica Neue', Arial, sans-serif;
+  
+    /* Font color */
+    --font-color-base: var(--gray-7);
+    --font-color-muted: var(--gray-6);
+    --font-color-heading: var(--gray-9);
+    --font-color-heading3: var(--gray-7);
+    --font-color-bright: var(--gray-9);
+    --font-color-hero-heading: var(--gray-0);
+  
+    /* Borders */
+    --border-color: var(--gray-3);
+    --border-color-hover: var(--gray-4);
+    --border-radius: 10px;
+  
+    /* Elements */
+    --background-color: white;
+    --card-background-color: var(--gray-0);
+    --button-background-color: var(--gray-05);
+    --marker: var(--border-color-hover);
+    --link: var(--indigo);
+    --link-hover-color: var(--indigo-muted);
+    --navbar: var(--gray-1);
+    --navbar-border: var(--gray-2);
+    --navbar-color: var(--gray-8);
+    --navbar-color-hover: var(--gray-9);
+    --navbar-background-hover: var(--gray-1);
+    --year: var(--green);
+    --star: var(--yellow);
+    --post-time-color: var(--gray-6);
+    --card-time-color: var(--gray-5);
+    --project-time-color: var(--font-color-muted);
+    --highlight-color: var(--green);
+    --blockquote-background: var(--indigo-muted);
+    --file-background: #eee;
+    --inline-code-background-color: var(--gray-0);
+    --category-link: #dd4eb2;
+    --scrollbar-color: var(--gray-3);
+    --scrollbar-track: var(--gray-4);
+  
+    /* Sizs */
+    --content-width: 780px;
+    --content-width--small: 560px;
+    --content-width--medium: 700px;
+    --navbar-height-small: 60px;
+  }
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -83,4 +167,18 @@ section {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+
+
+.navigation a.item.active,
+.navigation button.item.active {
+    background: var(--button-background-color);
+    border-color: var(--border-color);
+    color: var(--font-color-bright);
+}
+
+.navigation a.item:active,
+.navigation button.item:active {
+    transform: scale(0.95);
 }

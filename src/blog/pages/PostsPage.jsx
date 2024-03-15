@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPosts } from "../../store";
-import { Post } from "../components";
+import { PaginationPage, Post } from "../components";
 import { Typography } from "@mui/material";
 import { BlogLayout } from "../layout/BlogLayout";
 
@@ -27,7 +27,10 @@ export const PostsPage = () => {
       {
         posts.map( post => <Post key={post.id}  post={post} excerpt/>)
       }
-    </section>
+
+      <PaginationPage />
+
+      </section>
     </BlogLayout>
     
   )

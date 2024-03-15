@@ -2,10 +2,12 @@ export const pagesData = [
     {
         name: 'Home',
         route: '/*',
+        value: 'one'
     },
     {
         name: 'Posts',
         route: '/posts',
+        value: 'two'
     }
 ];
 
@@ -20,6 +22,7 @@ export const mainPost = {
 
 export const featuredPosts = [
     {
+        id: 1,
         title: 'Featured post',
         date: 'Nov 12',
         description:
@@ -27,7 +30,8 @@ export const featuredPosts = [
         image: 'https://source.unsplash.com/random?wallpapers',
         imageLabel: 'Image Text',
     },
-    {
+    {   
+        id: 2,
         title: 'Post title',
         date: 'Nov 11',
         description:
@@ -36,6 +40,7 @@ export const featuredPosts = [
         imageLabel: 'Image Text',
     },
     {
+        id: 3,
         title: 'Featured post',
         date: 'Nov 12',
         description:
@@ -44,6 +49,7 @@ export const featuredPosts = [
         imageLabel: 'Image Text',
     },
     {
+        id: 4,
         title: 'Post title',
         date: 'Nov 11',
         description:

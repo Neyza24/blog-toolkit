@@ -3,6 +3,7 @@ import { postsSlice } from "./posts/postsSlice";
 import { commentsByPostIdSlice } from "./posts/commentsByPostIdSlice";
 import { postByIdSlice } from "./posts/postByIdSlice";
 import { themeSlice } from "./theme/themeSlice";
+import { postsByLimitSlice } from "./posts/postsSilceByLimit";
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
         theme: themeSlice.reducer,
         posts: postsSlice.reducer,
         comments: commentsByPostIdSlice.reducer,
-        post: postByIdSlice.reducer
+        post: postByIdSlice.reducer,
+        postsByLimit: postsByLimitSlice.reducer
     }
 });

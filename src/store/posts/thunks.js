@@ -2,6 +2,7 @@
 
 import { getComments, getCommentsError, getCommentsSuccess } from "./commentsByPostIdSlice";
 import { getPost, getPostError, getPostSuccess } from "./postByIdSlice";
+import { getPostsByLimit, getPostsErrorByLimit, getPostsSuccessByLimit } from "./postsSilceByLimit";
 import { getPosts, getPostsError, getPostsSuccess } from "./postsSlice"
 
 export function fetchPosts() {
@@ -44,6 +45,22 @@ export function fetchPostById(id) {
             dispatch(getPostSuccess(data));
         } catch (error) {
             dispatch(getPostError());
+        }
+    }
+}
+
+
+export function fetchPostsByLimit(limit) {
+    return async (dispatch) => {
+        dispatch(getPostsByLimit());
+
+        try {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=${limit}`);
+            const data = await response.json();
+            console.log(data);
+            dispatch(getPostsSuccessByLimit(data));
+        } catch (error) {
+            dispatch(getPostsErrorByLimit());
         }
     }
 }
