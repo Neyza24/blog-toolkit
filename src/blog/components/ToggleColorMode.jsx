@@ -1,8 +1,9 @@
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { setTheme } from '../../store';
 
 export const ToggleColorMode = () => {

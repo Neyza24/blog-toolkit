@@ -17,7 +17,6 @@ export const MainFeaturedPost = () => {
                 backgroundImage: `url(${mainPost.image})`,
             }}
         >
-            {/* Increase the priority of the hero background image */}
             {<img style={{ display: 'none' }} src={mainPost.image} alt={mainPost.imageText} />}
             <Box
                 sx={{

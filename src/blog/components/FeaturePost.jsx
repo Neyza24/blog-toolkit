@@ -2,7 +2,7 @@ import { Link as RouterLink } from "react-router-dom"
 import {Typography, Grid, Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 
 
-export const FeaturedPost = ({post, img}) => {
+export const FeaturedPost = ({post, img, excerpt}) => {
     
     return (
         <Grid item xs={12} md={6}>
@@ -13,11 +13,15 @@ export const FeaturedPost = ({post, img}) => {
                             {post.title}
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
-                            {post.body}
+                            {excerpt ? post.body.substring(0, 100) : post.body}
                         </Typography>
-                        <Typography variant="subtitle1" color="primary">
-                            Continue reading...
-                        </Typography>
+                        {
+                            excerpt && (
+                                <Typography variant="subtitle1" color="primary">
+                                    Continue reading...
+                                </Typography>
+                            )
+                        }
                     </CardContent>
                     <CardMedia
                         component="img"
